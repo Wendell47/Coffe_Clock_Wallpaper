@@ -3,6 +3,21 @@
     src: url(fonts/PottaOne-Regular.ttf);
 }
 
+.loading{
+    position: absolute;
+    inset: 0;
+    background-color: #F1E1D9;
+    display: grid;
+    place-content: center;
+    z-index: 999;
+}
+.loading.hide{
+    display: none;
+}
+.loading p{
+    font-size: 2rem;
+    animation: loading 1s ease-in-out infinite;
+}
 *{
     box-sizing: border-box;
     padding: 0;
@@ -32,9 +47,11 @@ main,.cup{
     justify-content: flex-end;
     height: 350px;
     
+    animation: show 1s backwards ease-in-out 1s;
 }
 #time,#date{
     color: white;
+    animation: textTransition ease-in-out  backwards 600ms 1s;
 }
 #time{
     
@@ -52,7 +69,8 @@ main img{
     margin-bottom: -5px;
     width: 5rem;
     height: 10rem;
-    animation: smoke 1s infinite, opacity 2s ease-out ;
+    animation: smoke 1s infinite, opacity 3s ease-out ;
+    animation-delay: 3s;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center bottom;
@@ -62,7 +80,7 @@ main img{
     position: absolute;
     display: flex;
     gap: 1rem;
-    align-self: center;
+    align-items: center;
     justify-content: center;
     width: 6rem;
     bottom: 6rem;
@@ -70,11 +88,22 @@ main img{
 }
 .eye{
     width: .7rem;
-    animation: eyeMove 3s ease-in-out 2s infinite;
+    height: 1rem;
+    background-color: #282828;
+    border-radius: 11rem;
+   
+}
+.eyeAnimation{
+    animation: eyeMove 5s ease-in-out infinite 5s, blink 2s ease-in-out  infinite 2s, closed 400ms 3s backwards linear;
 }
 .mouth{
     width: 1.4rem;
 }
+
+#line {
+    animation: draw 400ms ease-out infinite;
+  }
+
 
 @keyframes smoke {
     
@@ -130,22 +159,118 @@ main img{
         transform: translate(0,0);
     }
     30%{
-        transform: translate(10px,-4px);
+        transform: translate(5px,-4px);
     }
     50%{
-        transform: translate(-10px,-4px);
+        transform: translate(-5px,-4px);
     }
     70%{
-        transform: translate(-10px,8px);
+        transform: translate(-4px,5px);
+    }
+    90%{
+       transform: translate(-6px,2px);
     }
     100%{
         transform: translate(0,0);
     }
 }
 
+@keyframes blink {
+    0%{
+        
+    }
+    69%{
+        height: 1rem;
+    }
+    70%{
+        height: .2rem;
+    }
+    75%{
+        height: 1rem;
+    }
+    80%{
+        height: .2rem;
+    }
+    81%{
+        height: 1rem;
+    }
+    100%{
+        height: 1rem;
+    }
+}
+@keyframes closed {
+    0%{
+        height: .2rem;
+    }
+  
+    100%{
+        height: 1rem;
+    }
+}
+
+@keyframes draw {
+    from {
+      /* Inicia a animação com um traço de 0 e um espaço de 300 */
+  
+      stroke-dasharray: 0 300;
+    }
+    to {
+      /* Termina a animação com um traço de 300 e um espaço de 0 */
+     
+      stroke-dasharray: 300 0;
+    }
+  }
+  
+@keyframes show {
+
+    0%{
+        opacity: 0;
+        transform: translate(-25px,0);
+    }
+    40%{
+        opacity: 1;
+        transform: translate(0,0) rotate(0deg);
+
+    }
+    55%{
+        transform: translate(20px,0) rotate(7deg);
+    }
+    60%{
+        transform: translate(-10px,0) rotate(-5deg);
+    }
+    65%{
+        transform: translate(0,0) rotate(0deg);
+    }
+    100%{
+        transform: translate(0,0);
+    }
+    
+}
+@keyframes textTransition {
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to{
+        opacity: 1;
+    }
+}
+@keyframes loading {
+        0%{
+            opacity: 1;
+        }    
+        50%{
+            opacity: 0;
+            
+        }
+        100%{
+            opacity: 1;
+            rotate: 360deg;
+        }
+}
 
 @media (max-width: 768px) {
     main{
-        transform: scale(1.3);
+        transform: scale(1.4);
     }
 }
