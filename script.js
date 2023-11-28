@@ -72,13 +72,7 @@ function eyeAnimation(){
 
 }
 
-//setInterval(eyeAnimation, 6000)
 
-/*setInterval(() => {
-  for (let i = 0; i < eye.length; i++){
-    eye[i].classList.remove('eyeAnimation')
-  }
- }, 8000)*/
 
 setInterval(refreshTime, 1000)
 
@@ -87,8 +81,8 @@ setInterval(refreshTime, 1000)
 
 let load = document.querySelector(".loading");
 
-// Registra uma função anônima para o evento DOMContentLoaded
-document.addEventListener("DOMContentLoaded", function(event) {
-  // Muda a mensagem de status para "Pronto!"
+
+window.addEventListener("load", function(event) {
+
   load.classList.add("hide")
 });

@@ -14,7 +14,7 @@
 .loading.hide{
     display: none;
 }
-.loading p{
+.loading img{
     font-size: 2rem;
     animation: loading 1s ease-in-out infinite;
 }
@@ -256,15 +256,9 @@ main img{
     }
 }
 @keyframes loading {
-        0%{
-            opacity: 1;
-        }    
-        50%{
-            opacity: 0;
+      
+        to{
             
-        }
-        100%{
-            opacity: 1;
             rotate: 360deg;
         }
 }
